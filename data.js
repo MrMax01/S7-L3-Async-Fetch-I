@@ -8,11 +8,16 @@ fetch("https://striveschool-api.herokuapp.com/books")
     booksList.forEach((book) => {
       const card = document.createElement("div");
       card.classList.add("card");
+
+      const col = document.createElement("col");
+      col.classList.add("col", "mb-3");
       /*CRATE IMG ELE */
-      const cardImg = document.createElement("div");
+      //   const cardImg = document.createElement("div");
       const img = document.createElement("img");
       img.classList.add("card-img-top");
       img.setAttribute("src", book.img);
+      img.setAttribute("height", "350px");
+      img.setAttribute("style", "object-fit: cover;");
       /*CREATE CARD BODY */
       const cardBody = document.createElement("div");
       cardBody.classList.add("card-body");
@@ -25,20 +30,21 @@ fetch("https://striveschool-api.herokuapp.com/books")
       bookPrice.classList.add("card-text");
       bookPrice.innerText = book.price;
       /**CREATE BUTTON */
-      const deleteBtn = document.createElement("button");
+      const deleteBtn = document.createElement("a");
       deleteBtn.classList.add("btn", "btn-primary");
       deleteBtn.innerText = "SCARTA";
 
-      cardImg.appendChild(img);
+      //   cardImg.appendChild(img);
       cardBody.appendChild(cardTitle);
       cardBody.appendChild(bookPrice);
       cardBody.appendChild(deleteBtn);
       /**CREATE CARD */
-      card.appendChild(cardImg);
+      card.appendChild(img);
       card.appendChild(cardBody);
       /**INSERT CARD ON LIST */
       //   console.log(booksListContainer);
-      booksListContainer.appendChild(card);
+      col.appendChild(card);
+      booksListContainer.appendChild(col);
     });
   })
   .catch((error) => {
