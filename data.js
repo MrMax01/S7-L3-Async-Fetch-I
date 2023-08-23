@@ -33,6 +33,10 @@ fetch("https://striveschool-api.herokuapp.com/books")
       const deleteBtn = document.createElement("a");
       deleteBtn.classList.add("btn", "btn-primary");
       deleteBtn.innerText = "SCARTA";
+      deleteBtn.addEventListener("click", (event) => {
+        console.log(event.currentTarget.parentElement.parentElement.parentElement);
+        event.currentTarget.parentElement.parentElement.parentElement.remove();
+      });
 
       //   cardImg.appendChild(img);
       cardBody.appendChild(cardTitle);
